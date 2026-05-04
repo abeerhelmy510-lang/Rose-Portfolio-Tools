@@ -3,122 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rose Tech Portfolio | معرض أعمال روز</title>
+    <title>منصة روز الشاملة | Rose Multi-Hub</title>
     <style>
-        /* CSS - تصميم عصري واحترافي */
-        :root {
-            --primary: #6366f1;
-            --accent: #f472b6;
-            --dark: #0f172a;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
+        :root { --p: #6366f1; --s: #f472b6; --bg: #0f172a; --card: #1e293b; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .header { text-align: center; padding: 20px; background: linear-gradient(to right, var(--p), var(--s)); border-radius: 15px; margin-bottom: 20px; }
+        
+        /* مكان الإعلانات */
+        .ad-space { background: #334155; padding: 10px; border: 1px dashed #94a3b8; text-align: center; margin: 15px 0; border-radius: 10px; color: #94a3b8; font-size: 0.8rem; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark);
-            color: white;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; }
+        .tab-btn { background: var(--card); border: 1px solid var(--p); color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .tab-btn.active { background: var(--p); }
 
-        .container {
-            width: 90%;
-            max-width: 600px;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
+        .section { background: var(--card); padding: 20px; border-radius: 15px; display: none; }
+        .section.active { display: block; }
 
-        h1 { color: var(--primary); margin-bottom: 10px; }
-        .signature { color: var(--accent); font-weight: bold; margin-bottom: 30px; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
+        input { flex: 1; padding: 10px; border-radius: 8px; border: none; background: #0f172a; color: white; }
+        button.add-btn { background: var(--s); border: none; color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
 
-        .input-group {
-            margin: 20px 0;
-            display: flex;
-            gap: 10px;
-        }
-
-        input {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            border: none;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            outline: none;
-        }
-
-        button {
-            padding: 12px 25px;
-            border-radius: 10px;
-            border: none;
-            background: var(--primary);
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover { background: var(--accent); }
-
-        ul { list-style: none; padding: 0; margin-top: 20px; }
-        li {
-            background: rgba(255,255,255,0.05);
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } }
+        ul { list-style: none; padding: 0; }
+        li { background: rgba(255,255,255,0.05); padding: 10px; margin-bottom: 5px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .del-btn { background: #ef4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Rose Smart Assistant</h1>
-    <p class="signature">تم التطوير بواسطة: روز (Rose)</p>
-    
-    <div class="input-group">
-        <input type="text" id="taskInput" placeholder="أضف مهمة برمجية جديدة...">
-        <button onclick="addTask()">إضافة</button>
+    <div class="header">
+        <h1>منصة روز الذكية 2026</h1>
+        <p>بواسطة المبرمجة: روز (Rose)</p>
     </div>
 
-    <ul id="taskList"></ul>
+    <div class="ad-space">مساحة إعلانية مخصصة (تحقق أرباح لروز)</div>
 
-    <div style="margin-top: 40px; font-size: 0.8rem; color: #64748b;">
-        &copy; 2026 Rose Tech Solutions | JavaScript & CSS Professional
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showSection('shop')">قائمة المشتريات</button>
+        <button class="tab-btn" onclick="showSection('school')">جدول الحصص</button>
+        <button class="tab-btn" onclick="showSection('tickets')">نظام التذاكر</button>
     </div>
+
+    <div id="shop" class="section active">
+        <h2>🛒 قائمة المشتريات</h2>
+        <div class="input-group">
+            <input type="text" id="shopInput" placeholder="أضف غرضاً للمشتريات...">
+            <button class="add-btn" onclick="addItem('shop')">إضافة</button>
+        </div>
+        <ul id="shopList"></ul>
+    </div>
+
+    <div id="school" class="section">
+        <h2>📅 جدول الحصص</h2>
+        <div class="input-group">
+            <input type="text" id="schoolInput" placeholder="أضف مادة دراسية ووقتها...">
+            <button class="add-btn" onclick="addItem('school')">إضافة</button>
+        </div>
+        <ul id="schoolList"></ul>
+    </div>
+
+    <div id="tickets" class="section">
+        <h2>🎫 نظام التذاكر والدعم</h2>
+        <div class="input-group">
+            <input type="text" id="ticketsInput" placeholder="أدخل تفاصيل التذكرة...">
+            <button class="add-btn" onclick="addItem('tickets')">فتح تذكرة</button>
+        </div>
+        <ul id="ticketsList"></ul>
+    </div>
+
+    <div class="ad-space">إعلانات Google AdSense تظهر هنا</div>
 </div>
 
 <script>
-    /* JavaScript - منطق التعامل مع البيانات */
-    function addTask() {
-        const input = document.getElementById('taskInput');
-        const list = document.getElementById('taskList');
-        
-        if (input.value.trim() === "") return;
-
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <span>${input.value}</span>
-            <button style="background: #ef4444; padding: 5px 10px;" onclick="this.parentElement.remove()">حذف</button>
-        `;
-        
-        list.appendChild(li);
-        input.value = "";
-        
-        // رسالة في الكونسول تظهر احترافيتك للعملاء الذين يفحصون الكود
-        console.log("Task added successfully by Rose's logic.");
+    // وظيفة التنقل بين الأقسام
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        event.target.classList.add('active');
     }
+
+    // وظيفة الإضافة والحفظ "مدى الحياة"
+    function addItem(type) {
+        const input = document.getElementById(type + 'Input');
+        if (input.value === "") return;
+
+        const items = JSON.parse(localStorage.getItem('rose_' + type)) || [];
+        items.push(input.value);
+        localStorage.setItem('rose_' + type, JSON.stringify(items));
+        
+        input.value = "";
+        render(type);
+    }
+
+    // وظيفة عرض البيانات من الذاكرة
+    function render(type) {
+        const list = document.getElementById(type + 'List');
+        const items = JSON.parse(localStorage.getItem('rose_' + type)) || [];
+        list.innerHTML = items.map((item, index) => `
+            <li>
+                <span>${item}</span>
+                <button class="del-btn" onclick="deleteItem('${type}', ${index})">حذف</button>
+            </li>
+        `).join('');
+    }
+
+    // وظيفة الحذف وتحديث الذاكرة
+    function deleteItem(type, index) {
+        const items = JSON.parse(localStorage.getItem('rose_' + type));
+        items.splice(index, 1);
+        localStorage.setItem('rose_' + type, JSON.stringify(items));
+        render(type);
+    }
+
+    // تحميل البيانات تلقائياً عند فتح الصفحة
+    window.onload = () => { ['shop', 'school', 'tickets'].forEach(type => render(type)); };
 </script>
 
 </body>
